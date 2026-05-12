@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME: LIGNESHWAR K</H3>
+<H3>ENTER YOUR REGISTER NO. 212223230113</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE 12-00-2026</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -38,10 +38,75 @@ STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
 TYPE YOUR CODE HERE
+```python
+#import libraries
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
 
+#Read the dataset from drive
+df = pd. read_csv( '/content/Churn_Modelling.csv' )
+print(df)
+
+#split the dataset
+X = df. iloc[ :, : -1] . values
+print (X)
+y = df . iloc[ :, -1] . values
+print(y)
+
+# Finding Missing Values
+print(df.isnull().sum())
+
+#Handling Missing values
+print(df.isnull() .sum() )
+y = df . iloc[ :, -1] . values
+print(y)
+
+#Check for Duplicates
+df.duplicated()
+
+#Detect Outliers
+scaler = MinMaxScaler()
+
+# Select only numerical columns for scaling
+numerical_cols = df.select_dtypes(include=['number'])
+df1 = pd.DataFrame(scaler.fit_transform(numerical_cols))
+print(df1)
+
+#splitting the data for training & Testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
+
+#'test_size=0.2' means 20% test data and 80% train data
+print(X_train)
+print(len(X_train))
+print(X_test)
+print(len(X_test))
+```
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Read the dataset
+<img width="874" height="834" alt="image" src="https://github.com/user-attachments/assets/b232e551-4484-408f-8258-c7a577a375ac" />
+
+### split the dataset
+<img width="774" height="223" alt="image" src="https://github.com/user-attachments/assets/53b25fe5-d890-4810-8ed4-751e2fcfe2ac" />
+
+### Finding Missing Values
+<img width="667" height="328" alt="image" src="https://github.com/user-attachments/assets/bd4de803-abab-41d6-89d3-f747a59f33a5" />
+
+### Handling Missing values
+<img width="728" height="345" alt="image" src="https://github.com/user-attachments/assets/a20db9ed-f969-45d2-bbe5-bcd5b825ef85" />
+
+### Check for Duplicates
+<img width="617" height="272" alt="image" src="https://github.com/user-attachments/assets/146f93ae-30fd-465c-ac40-cc360f47931a" />
+
+### Normalized dataset
+<img width="994" height="557" alt="image" src="https://github.com/user-attachments/assets/ae1dcad9-4fbc-49ed-884f-117f14dc5b8b" />
+
+### Print train and test data
+<img width="765" height="352" alt="image" src="https://github.com/user-attachments/assets/a0fe9ec4-78ae-4c43-b2cf-5cd2045b0681" />
+
 
 
 ## RESULT:
